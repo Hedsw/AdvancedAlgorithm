@@ -4,11 +4,11 @@
 #  import requests
 
 
-menPrefRecord = [['Bertha','Diane','Amy','Erika','Clare'],
-    ['Amy','Diane','Clare','Bertha','Erika'],
-    ['Bertha','Erika','Clare','Diane','Amy'],
+menPrefRecord = [['Bertha','Amy','Diane','Erika','Clare'],
     ['Diane','Bertha','Amy','Clare','Erika'],
-    ['Bertha','Amy','Diane','Erika','Clare']]
+    ['Bertha','Erika','Clare','Diane','Amy'],
+    ['Amy','Diane','Clare','Bertha','Erika'],
+    ['Bertha','Diane','Amy','Erika','Clare']]
 
 womenPrefRecord = [['Zeus','Victor','Wyatt','Yancey','Xavier'],
     ['Xavier','Wyatt','Yancey','Victor','Zeus'],
