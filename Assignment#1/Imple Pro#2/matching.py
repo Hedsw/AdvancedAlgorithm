@@ -58,10 +58,8 @@ def Matches(CountingStopby, N, menPrefEngaged, menFavo, womenPartner, womenFavo)
 def Preference(curPartner, newPartner, index, N, wprefer):
     for i in range(N):
         if wprefer[index][i] == newPartner:
-            #print(wprefer[index][i], ' Preference if1')
             return True
         if wprefer[index][i] == curPartner:
-            #print(wprefer[index][i], ' Preference if2')
             return False
     return False
 
@@ -85,7 +83,7 @@ def PrintMatched(menMatch, womenMatch, womenmatchingpartner):
     j = 0
     print(' ')
     print(' ')
-    print("Yunhyeok Lee First Assignment")
+    print("Yunhyeok Lee First Assignment!")
     print(' ')
     print("Men Preference List")
 
