@@ -1,6 +1,7 @@
 import random
 
 def main():
+    # Initializing 
     time, time = 0, 0
     n = 5    
     finalarrivetime = [0] * n
@@ -8,10 +9,12 @@ def main():
     swimming = [0] * n
     riding = [0] * n
 
+
+    # Initialize Swimming, Biking, Riding Time from 0 to 11 randomly.
     for i in range(n):
-        swimming[i] = random.randint(0, 10) + 1
-        biking[i] = random.randint(0, 10) + 1
-        riding[i] = random.randint(0, 10) + 1
+        swimming[i] = random.randint(1, 11) 
+        biking[i] = random.randint(1, 11) 
+        riding[i] = random.randint(1, 11)
     '''
     print(swimming)
     print("Swimming")
@@ -22,6 +25,7 @@ def main():
     print('------------')
     '''
 
+    # Swapping if Biking + Riding time is bigger than previous bikinng and riding time, Convert the numbers
     for i in range(n-1):
         j = i+1
         for j in range(n):
@@ -41,6 +45,8 @@ def main():
     for i in range(n):
         print("Participant No." , i + 1, " Swimming Time = ", swimming[i] , "Biking Time = " , biking[i] , "Riding Time = " , riding[i])
 
+    # If the finalarrivetime length is bigger than i, finalArrivetTime = FinalArriveTime + Time
+    # This is because to calculate all of numbers
     for i in range(n):
         time = time + swimming[i]
         if len(finalarrivetime) > i:
