@@ -60,4 +60,4 @@ def main():
         else:
             time = time + (biking[i] + riding[i]) - (time - finalarrivetime[i])
 
-    print("Total Time " , n , "Participant is... " , time , "minute")
+    print( n , "Optimal Times of " , time , "minute")
