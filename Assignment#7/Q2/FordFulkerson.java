@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class FordFulkerson {
-	static final int vertexCount = 8; 	//Number of vertices in graph is hardcoded 
+	static final int vertexCount = 30; 	//Number of vertices in graph is hardcoded 
 	//maps array index 0 to "s", & successive indexes to a string equivalent
 	private String[] arrayIndexStringEquivalents;	//arrayIndexStringEquivalents[0]="S" & arrayIndexStringEquivalents[vertexCount-1]="T"
 
@@ -35,8 +35,8 @@ public class FordFulkerson {
 				pathString = " --> "+arrayIndexStringEquivalents[vertexV]+ pathString;	//prepend vertex to path
 			}
 			pathString= "S"+pathString;		//loop stops before it gets to S, so add S to the beginning
-			System.out.println("Augmentation path \n"+pathString);
-			System.out.println("bottleneck (min flow on path added to max flow) = "+bottleneckFlow +"\n");
+			System.out.println("Augment Path is..  \n"+pathString);
+			System.out.println("Bottleneck is.. Minimum flow on path added to Maximum flow = "+bottleneckFlow +"\n");
 
 			//Update residual graph capacities & reverse edges along the path
 			for (vertexV=vertexT; vertexV != vertexS; vertexV=parent[vertexV]) {	//loop backwards over path (same loop as above)
@@ -82,27 +82,50 @@ public class FordFulkerson {
 		//graphMatrix[0][0]=0 since S has no edges to itself
 		//graphMatrix[0][1]=10 since there's an edge from S to node 2
 
-		//Vertex  = index
-		// 		s = 0
-		// 		2 = 1
-		// 		3 = 2
-		// 		4 = 3
-		// 		5 = 4
-		// 		6 = 5
-		// 		7 = 6
-		// 		t = 7
-		String[] arrayIndexStringEquivalents = {"S", "2", "3", "4", "5", "6", "7", "T"};	//map human readable names to each vertex, not just array indexes
-		int graphMatrix[][] =new int[][] { { 0, 16, 11, 0, 0, 15, 0, 0}, { 0, 0, 6, 7, 8, 0, 0, 0},
-        { 0, 0, 0, 0, 12, 0, 0, 0},  { 0, 0, 0, 0, 0, 0, 0, 18},
-        { 0, 0, 0, 6, 0, 0, 8, 10},   { 0, 0, 4, 0, 5, 0, 6, 0}, 
-        { 0, 0, 0, 0, 0, 0, 0, 13}, { 0, 0, 0, 0, 0, 0, 0, 0}
-        };
+		
+		String[] arrayIndexStringEquivalents = {"S", "P1", "P2", "P3", "P4", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11", "D12", "H1", "H2", "H3", "H4", "H5", "H6", "H7", "H8", "H9", "H10", "H11", "H2", "T"};	//map human readable names to each vertex, not just array indexes
+		int graphMatrix[][] =new int[][]  {
+		
+			{0,3,3,3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, // S -> P 
+			
+			{0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,0,1,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,1,0},
+
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+			{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+		};
+		
 		
 		FordFulkerson maxFlowFinder = new FordFulkerson(arrayIndexStringEquivalents);
 
 		int vertexS = 0;
 		int vertexT = vertexCount-1;	//T is the last thing in the list
-		System.out.println("\ Ford Fulkerson Max Flow: " + maxFlowFinder.maxFlow(graphMatrix, vertexS, vertexT));
+		System.out.println("\n Ford-Fulkerson Doctor Problem Max Flow is.. : " + maxFlowFinder.maxFlow(graphMatrix, vertexS, vertexT));
 	}
 
 }
