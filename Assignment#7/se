@@ -1,0 +1,17 @@
+Initially define, Graphic = G, source = s, sink = t, flow = f
+
+Ford-Fulkerson (g, s, t, f) { // g is Graphic, S is source, t is  sink, F is  flow 
+	Foreach edge(u,v) ∈ G, E (E is edge)
+		(u,v) f =0 
+	End For
+	For Loop (if path P from s to t in the residual network Gf)  // argument path Finding
+	cf(p) = min{cf(u,v): (u,v) is in p} // Residual Graph Update
+
+    Foreach edge(u,v) in path P 
+    if(u,v) є E then,
+	(u,v) flow f = (u,v) flow f + cf(p)
+    Else (u,v) flow f = (u,v) flow f - cf(p)
+    ENDIF 
+    END FOR
+END FOR
+}
